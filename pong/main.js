@@ -1,9 +1,9 @@
 (function () {
-  self.Board = funtion(width, height){
+  self.Board = function(width, height){
     this.width = width;
     this.height = height;
     this.playing = false;
-    this.game = game_over;
+    this.game_over = false;
     this.bars = [];
     this.ball = null;
   }
@@ -17,7 +17,7 @@
   }
 })();
 
-(funtion (){
+(function (){
   self.BoardView = function(canvas, board){
     this.canvas =  canvas;
     this.canvas.width = board.width;
@@ -31,6 +31,6 @@ window.addEventListener("load", main);
 
 function main(){
   var board = new Board(800,400);
-  var canvas = document.querySelector('.canvas');
+  var canvas = document.getElementById('canvas');
   var board_view = new BoardView(canvas, board);
 }
