@@ -26,14 +26,15 @@
     this.board = board;
     this.board.bars.push(this);
     this.kind = "rectangle";
+    this.speed= 10;
   }
 
   self.Bar.prototype = {
     down: function(){
-
+      this.y += this.speed;
     },
     up: function(){
-
+      this.y -= this.speed;
     }
   }
 })();
@@ -70,13 +71,31 @@
   }
 })();
 
-self.addEventListener("load", main);
 
-function main(){
-  var board = new Board(800,400);
+ var board = new Board(800,400);
   var bar1 = new Bar(20, 100, 40, 100, board);
   var bar2 = new Bar(740, 100, 40, 100, board);
   var canvas = document.getElementById('canvas');
   var board_view = new BoardView(canvas, board);
-  board_view.draw();
+
+document.addEventListener("keydown", function(ev){
+  if(ev.keyCode == 38 ){ //flecha hacia arriaba
+      bar1.up();
+  }
+  else if(ev.keyCode == 40 ){ //flecha hacia abajo
+    bar1.down();
+  }
+  if(ev.keyCode == 188 ){ //flecha hacia arriaba
+      bar2.up();
+  }
+  else if(ev.keyCode == 79){ //flecha hacia abajo
+    bar2.down();
+  }
+  console.log(bar1);
+});
+
+self.addEventListener("load", main);
+
+function main(){
+   board_view.draw();
 }
