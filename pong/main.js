@@ -171,6 +171,9 @@ var board_view = new BoardView(canvas, board);
 var ball = new Ball(350, 100, 10, board);
 
 document.addEventListener("keydown", function (ev) {
+
+  console.log(ev.keyCode)
+
   if (ev.keyCode === 38) {
     //flecha hacia arriaba
     ev.preventDefault();
@@ -180,6 +183,7 @@ document.addEventListener("keydown", function (ev) {
     ev.preventDefault();
     bar2.down();
   }
+
   if (ev.keyCode === 188) {
     //flecha hacia arriaba
     ev.preventDefault();
@@ -188,7 +192,19 @@ document.addEventListener("keydown", function (ev) {
     //flecha hacia abajo
     ev.preventDefault();
     bar1.down();
-  } else if (ev.keyCode === 32) {
+  }
+  
+  if (ev.keyCode === 83) {
+    //w
+    ev.preventDefault();
+    bar1.up();
+  } else if (ev.keyCode === 87) {
+    //s
+    ev.preventDefault();
+    bar1.down();
+  } 
+
+  if (ev.keyCode === 32) {
     //barra espaciadora
     ev.preventDefault();
     board.playing = !board.playing;
